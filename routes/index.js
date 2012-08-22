@@ -5,4 +5,11 @@ module.exports = function(app){
             title: 'Express Login'
         });
     });
+
+    app.get('/items', function(req, res){
+        res.render('items', {
+            title: 'Items'
+        });
+    });
+
 }
