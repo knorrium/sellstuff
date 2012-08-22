@@ -1,8 +1,8 @@
+module.exports = function(app){
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
+    app.get('/', function(req, res){
+        res.render('index', {
+            title: 'Express Login'
+        });
+    });
+}

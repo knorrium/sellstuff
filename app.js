@@ -4,11 +4,12 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , http = require('http')
   , path = require('path');
 
 var app = express();
+
+require('./routes')(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -25,8 +26,6 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
-app.get('/', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
