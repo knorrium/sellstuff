@@ -3,13 +3,17 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+    http = require('http'),
+    path = require('path');
 
 var app = express();
 
-require('./routes')(app);
+app.mongoose = require('mongoose'),
+app.db = app.mongoose.connect('mongodb://localhost/mydb'),
+app.Schema = app.mongoose.Schema;
+
+require('./routes/routes.js')(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
