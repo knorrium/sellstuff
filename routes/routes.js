@@ -12,20 +12,19 @@ module.exports = function(app){
         });
     });
 
-    app.get('/user', function (req, res) {
+    app.get('/user/:name', function (req, res) {
         var User = new app.Schema({
             username: String,
             title: String
         });
 
         var userModel = app.mongoose.model('User', User);
+        
         res.contentType('application/json');
-        userModel.findOne({'username': 'Felipe'}, function(err, user) {
+        userModel.findOne({'username': req.params.name}, function(err, user) {
             if (user !== null) {
-                console.log('Found the User: ' + user.username);
                 res.send(JSON.stringify(user));
             } else {
-                console.log("User not found");
                 res.send({
                     'error': 'user not found'
                 });
