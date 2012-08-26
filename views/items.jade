@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p See below
+	h1= title
+	if (items.length)
+		p The items below are available for sale
+		ul
+			each item in items
+				li
+					a(href="item/#{item._id}") #{item.title}
+	else
+		p Sorry, there are no items available at this moment :(
