@@ -1,12 +1,14 @@
-module.exports = function(app){
+/*global module*/
 
-    app.get('/', function(req, res){
+module.exports = function (app) {
+    "use strict";
+    app.get('/', function (req, res) {
         res.render('index', {
             title: 'Express Login'
         });
     });
 
-    app.get('/items', function(req, res){
+    app.get('/items', function (req, res) {
         res.render('items', {
             title: 'Items'
         });
@@ -14,14 +16,12 @@ module.exports = function(app){
 
     app.get('/user/:name', function (req, res) {
         var User = new app.Schema({
-            username: String,
-            title: String
-        });
+                username: String,
+                title: String
+            }),
+            userModel = app.mongoose.model('User', User);
 
-        var userModel = app.mongoose.model('User', User);
-        
-        res.contentType('application/json');
-        userModel.findOne({'username': req.params.name}, function(err, user) {
+        userModel.findOne({'username': req.params.name}, function (err, user) {
             if (user !== null) {
                 res.send(JSON.stringify(user));
             } else {
@@ -31,4 +31,4 @@ module.exports = function(app){
             }
         });
     });
-}
+};
