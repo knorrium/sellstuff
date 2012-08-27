@@ -1,7 +1,26 @@
-doctype 5
+!!!
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+  include inc/header
+
   body
-    block content
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          a(data-toggle='collapse', data-target='.nav-collapse').btn.btn-navbar
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href='/home').brand #{brand}
+          ul.nav
+            - var obj = { 'home':'Home', 'items':'Items' }
+              - each val, key in obj
+                - if (id == key)
+                  li.active
+                    a(href='#{key}') #{val}
+                - else
+                  li
+                    a(href='#{key}') #{val}
+    div.container
+      block content
+      include inc/footer
+  include inc/scripts

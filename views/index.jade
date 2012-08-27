@@ -1,5 +1,8 @@
-extends layout
+extend layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	div.hero-unit
+		h1= title
+		p Here you will find everything we have on sale. Please take a look.
+		a(href="/items")
+			input(type='button', value='Check it out >>')

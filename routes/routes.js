@@ -3,21 +3,30 @@
 module.exports = function (app) {
     "use strict";
     app.get('/', function (req, res) {
+        res.redirect('/home');
+    });
+
+    app.get('/home', function (req, res) {
         res.render('index', {
-            title: 'Express Login'
+            title: 'Welcome to our shop!',
+            brand: 'SellStuff',
+            id: 'home'
         });
     });
 
     app.get('/items', function (req, res) {
         var Item = new app.Schema({
-                title: String
+                title: String,
+                price: String
             }),
             itemModel = app.mongoose.model('Item', Item);
 
         itemModel.find({}, function (err, items) {
             res.render('items', {
                 title: 'Items for sale',
-                items: items
+                items: items,
+                brand: 'SellStuff',
+                id: 'items'
             });
         });
     });
@@ -36,7 +45,9 @@ module.exports = function (app) {
             if (item !== null) {
                 res.render('item', {
                     title: 'Item details',
-                    item: item
+                    item: item,
+                    brand: 'SellStuff',
+                    id: 'item'
                 });
             } else {
                 res.send({
