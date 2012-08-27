@@ -1,14 +1,14 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "SellStuff",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "3.0.0rc3",
-    "jade": "*",
-    "mongodb": "1.1.4",
-    "mongoose": "3.0.3"
+    "express": "latest",
+    "jade": "latest",
+    "mongodb": "latest",
+    "mongoose": "latest"
   }
 }
