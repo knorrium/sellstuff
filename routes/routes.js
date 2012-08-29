@@ -10,7 +10,7 @@ module.exports = function (app) {
         res.render('index', {
             title: 'Welcome to our shop!',
             brand: 'SellStuff',
-            id: 'home'
+            id: '/home'
         });
     });
 
@@ -21,7 +21,7 @@ module.exports = function (app) {
                 title: 'Items for sale',
                 items: items,
                 brand: 'SellStuff',
-                id: 'items'
+                id: '/items'
             });
         });
     });
