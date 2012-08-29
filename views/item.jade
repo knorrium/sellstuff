@@ -3,13 +3,16 @@ extends layout
 block content
 	h1= title
 	p #{item.title}
+
 	p #{item.description}
+
 	p R$ #{item.price}
-	if (item.pictures.length)
+
+	- if(item.pictures.size)
 		each picture in item.pictures
 			img(src="#{picture}")
 
-	if (item.tags.length)
+	- if(item.tags.size)
 		h2 Tags
 		ul
 			each tag in item.tags
