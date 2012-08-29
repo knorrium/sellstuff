@@ -15,12 +15,7 @@ module.exports = function (app) {
     });
 
     app.get('/items', function (req, res) {
-        var Item = new app.Schema({
-                title: String,
-                price: String
-            }),
-            itemModel = app.mongoose.model('Item', Item);
-
+        var itemModel = app.mongoose.model('Item');
         itemModel.find({}, function (err, items) {
             res.render('items', {
                 title: 'Items for sale',
@@ -32,15 +27,7 @@ module.exports = function (app) {
     });
 
     app.get('/item/:id', function (req, res) {
-        var Item = new app.Schema({
-                title: String,
-                description: String,
-                price: String,
-                tags: [String],
-                pictures: [String]
-            }),
-            itemModel = app.mongoose.model('Item', Item);
-
+        var itemModel = app.mongoose.model('Item');
         itemModel.findOne({'_id': req.params.id}, function (err, item) {
             if (item !== null) {
                 res.render('item', {

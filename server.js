@@ -13,6 +13,16 @@ app.mongoose = require('mongoose'),
 app.db = app.mongoose.connect('mongodb://localhost/mydb'),
 app.Schema = app.mongoose.Schema;
 
+var Item = new app.Schema({
+        title: String,
+        description: String,
+        price: String,
+        tags: [String],
+        pictures: [String]
+    });
+
+app.mongoose.model('Item', Item);
+
 require('./routes/routes.js')(app);
 
 app.configure(function(){
