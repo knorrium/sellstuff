@@ -8,11 +8,11 @@ block content
 
 	p R$ #{item.price}
 
-	- if(item.pictures.size)
+	- if(item.pictures.length)
 		each picture in item.pictures
 			img(src="#{picture}")
 
-	- if(item.tags.size)
+	- if(item.tags.length)
 		h2 Tags
 		ul
 			each tag in item.tags
