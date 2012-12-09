@@ -16,6 +16,7 @@ app.Schema = app.mongoose.Schema;
 var Item = new app.Schema({
         title: String,
         description: String,
+        slug: String,
         price: String,
         tags: [String],
         pictures: [String]

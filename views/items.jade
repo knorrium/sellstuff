@@ -7,6 +7,6 @@ block content
 		ul
 			each item in items
 				li
-					a(href="item/#{item._id}") #{item.title} - R$#{item.price}
+					a(href="item/#{item.slug}") #{item.title} - R$#{item.price}
 	else
 		p Sorry, there are no items available at this moment :(

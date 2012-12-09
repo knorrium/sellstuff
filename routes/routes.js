@@ -26,9 +26,9 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/item/:id', function (req, res) {
+    app.get('/item/:slug', function (req, res) {
         var itemModel = app.mongoose.model('Item');
-        itemModel.findOne({'_id': req.params.id}, function (err, item) {
+        itemModel.findOne({'slug': req.params.slug}, function (err, item) {
             if (item !== null) {
                 res.render('item', {
                     title: 'Item details',
